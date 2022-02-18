@@ -1,0 +1,54 @@
+initialization / initialize 
+
+what does it do: to assign a value to a variable (or object)
+
+rationale: you want a variable to have a proper value!
+
+mnemonic: init / initiative = first/beginning: it is the beginning of the 'working life' of a variable.
+
+examples:
+
+void MyMethod()
+{
+	int x; // DECLARATION of x, NOT initialization
+	x = 5; // initialization of x 					<- initialization 
+	Person p; // declaration of p 
+	p = new Person("Joe","Biden"); // initialization of p; p is initialized to the reference/address of the new Person object
+		// you could also say that the a Person object is made and initialized (giving it the name "Joe Biden")
+	string s;
+	s = Console.ReadLine(); // of course you don't have to initialize variables with literals, you can also 
+		// initialize them via function calls, or with the result of a calculation, or whatever.
+}
+
+border cases:
+
+void MyOtherMethod()
+{
+	int x = 5; // x can be declared and initialized in the same line; this is generally considered 'best practice',
+		// though there are some cases where it is not possible, for example if it is used as a loop condition or 
+		// it will get a different value based on program flow (though in the latter case one can often use the ? : operator 
+		// or switch expressions.
+}
+
+
+class MyClass {
+   string s; // this LOOKS like a declaration, but fields and properties are also automatically initialized at their declaration 
+		// with the appropriate "zero-value". strings and other objects will be initialized to null
+   Person p; // same as Person p = null;
+   int x; // same as int x = 0; 0 is also the default value for byte, short, long, signed byte, and unsigned short/int/long
+   double length; // same as double length = 0.0;  // float also gets the value 0.0 unless otherwise specified.
+   bool b; // same as bool b = false;
+}
+
+don't confuse initialization with declaration. Some programming languages, like Python, don't declare variables, they just create 
+them by initialization.
+
+In Python 
+
+result = 0
+if (3 > 2):
+    resul = 1
+	
+This is valid Python. Of course, it contains a bug, which would be hard to find in a larger program. This is why almost every other 
+language now makes declaration a best practice, though often declaration is combined with initialization
+(like JavaScript const a = 3; Kotlin: val b = "hello"; Go: c := 5.67;
