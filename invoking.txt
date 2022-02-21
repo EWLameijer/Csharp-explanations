@@ -1,0 +1,40 @@
+invoking versus calling 
+
+what is it? it is used semi-interchangeably with calling. Typically, however, you would use 'calling' if you call a method in the same 
+class, and you use 'invoke' if you have a function/method object and you want to run the function. If you are calling a method in an external object, both calling and invoking can be used more or less interchangeably (personally I'd tend to use call for static methods and invoke for non-static methods, but other programmers may use either call or invoke for either; and as a fallible human being I am not 100% consistent either, seeing how often I call a method a function, while 'method' would be more precise.
+
+why? because you sometimes want to run code 
+
+Example:
+
+class Pet 
+{
+   private _weight = 0;
+
+   public void Eat(int amountOfFood)
+   {
+       _weight += amountOfFood;
+   }
+}
+
+class Person
+{
+    private Pet _pet = new Pet();
+	
+	public void FeedPet() 
+	{
+	   _pet.Eat(1);
+	}
+
+	private Action<string> _vocalize = s => Console.WriteLine($"I am saying '{s}'!");
+
+	public void DoDailyChores() 
+	{
+	    _vocalize("Hello world!");
+	    FeedPet();
+	}
+}
+
+Here I would describe the "FeedPet()"  line in DoDailyChores() as calling FeedPet
+I would describe _vocalize("Hello world!") as INVOKING _vocalize (as vocalize is not a method, but an object, be it a function-containing object)
+_pet.Eat(1) I could either describe as calling Eat on _pet or invoking Eat on _pet
